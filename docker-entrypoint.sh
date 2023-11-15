@@ -7,8 +7,16 @@ sudo service slurmd start
 sudo service mariadb start
 sudo mysql -u root < initialize-mariadb.sh
 sudo service slurmdbd start
-sudo service slurmctld start
-tail -f /dev/null
+# sudo service slurmctld start
+
 # service  --status-all
 #  srun  hostname
-sudo -u admin sh start-slurmrestd.sh
+echo 'starting slurmrestd'
+sudo -u admin sh start-slurmrestd.sh &
+echo 'starting slurmctld'
+sleep 2
+sudo service slurmctld start
+service  --status-all
+# slurmctld -D
+
+tail -f /dev/null
