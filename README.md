@@ -1,3 +1,14 @@
+##
+https://github.com/hokiegeek2/slurm-cloud-integration
+
+```
+cd master
+docker build -t wangyang1749/slurm-cluster:1.0 . 
+docker run -it --privileged -p 6820:6820 wangyang1749/slurm-cluster:1.0 bash
+
+```
+
+##
 # slurm-cluster
 Docker local slurm cluster
 
