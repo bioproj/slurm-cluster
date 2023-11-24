@@ -18,6 +18,9 @@ RUN apt-get install python3-pip -y
 RUN pip install jupyterlab
 RUN pip install jupyterlab_slurm
 
+RUN apt-get autoremove -y
+RUN apt-get clean -y
+
 COPY slurm.conf /etc/slurm/
 COPY cgroup.conf /etc/slurm/
 COPY slurmdbd.conf /etc/slurm/
@@ -28,5 +31,5 @@ RUN chmod 600 /etc/slurm/slurmdbd.conf
 WORKDIR /home/admin
 COPY initialize-mariadb.sh .
 COPY start-slurmrestd.sh .
-ENV USER admin
+ENV USER root
 ENTRYPOINT ["/etc/slurm/docker-entrypoint.sh"]

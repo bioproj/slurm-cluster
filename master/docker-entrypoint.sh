@@ -31,7 +31,7 @@ sudo service slurmctld start
 # echo 'starting slurmrestd'
 # sudo -u admin sh start-slurmrestd.sh &
 ###################################################
-sudo -u admin  jupyter lab --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.password='' &
+jupyter lab --no-browser --allow-root --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.password='' &
 
 echo "启动的服务..."
 service  --status-all
