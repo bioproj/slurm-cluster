@@ -11,6 +11,13 @@ RUN useradd -m admin -s /usr/bin/bash -d /home/admin && echo "admin:admin" | chp
 RUN echo "root     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers 
 # RUN apt update -y && apt install libopenmpi-dev -y && pip3 install mpi4py
 
+RUN wget https://deb.nodesource.com/setup_18.x
+RUN bash ./setup_18.x
+RUN apt-get install nodejs -y
+RUN apt-get install python3-pip -y
+RUN pip install jupyterlab
+RUN pip install jupyterlab_slurm
+
 COPY slurm.conf /etc/slurm/
 COPY cgroup.conf /etc/slurm/
 COPY slurmdbd.conf /etc/slurm/
@@ -21,4 +28,5 @@ RUN chmod 600 /etc/slurm/slurmdbd.conf
 WORKDIR /home/admin
 COPY initialize-mariadb.sh .
 COPY start-slurmrestd.sh .
+ENV USER admin
 ENTRYPOINT ["/etc/slurm/docker-entrypoint.sh"]
