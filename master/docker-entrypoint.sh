@@ -38,5 +38,5 @@ service  --status-all
 # slurmctld -D
 tail -f /dev/null
 # docker build -t wangyang1749/slurm-all:1.0 .
-# docker run  --name slurm-all     --network=host --rm -it  wangyang1749/slurm-all:1.0
+# docker run  --name slurm-all-master     --network=host --rm   wangyang1749/slurm-all-master:1.0
 # docker image push wangyang1749/slurm-all-master:1.0
